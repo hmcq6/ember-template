@@ -3,7 +3,7 @@ import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mi
 
 export default Route.extend(ApplicationRouteMixin, {
   actions: {
-    logout() {
+    invalidateSession() {
       this.get('session').invalidate();
     }
   }

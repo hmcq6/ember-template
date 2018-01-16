@@ -7,9 +7,10 @@ export default Component.extend({
   actions: {
     authenticate() {
       const { identification, password } = this.getProperties('identification', 'password');
-      return this.get('session').authenticate('authenticator:devise', identification, password).catch(({ error }) => {
-        this.set('errorMessage', error);
-      });
+      return this.get('session').authenticate('authenticator:devise', identification, password).
+        catch(({ error }) => {
+          this.set('errorMessage', error);
+        });
     }
   }
 });
