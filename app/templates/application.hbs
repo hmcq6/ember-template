@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col text-right">
       {{#if session.isAuthenticated}}
-        <button {{action 'invalidateSession'}}>Logout</button>
+        <button {{action 'invalidateSession'}} class="btn btn-dark">Logout</button>
       {{else}}
         {{login-form}}
       {{/if}}
@@ -12,7 +12,7 @@
 
   <div class="row">
     <div class="col-4 offset-4">
-        LOGO
+      <img style="width: 100%;" src="https://lolibrary.org/assets/ban2-03.png">
     </div>
   </div>
 
@@ -33,7 +33,9 @@
       <ul class="list-group">
         <li class="list-group-item">Brands</li>
         <li class="list-group-item">Item Types</li>
+        <li class="list-group-item">Item Features</li>
         <li class="list-group-item">Tags</li>
+        <li class="list-group-item">Colors</li>
       </ul>
     </div>
     <div class="col-9">
