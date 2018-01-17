@@ -1,8 +1,64 @@
-{{#if session.isAuthenticated}}
-  <a {{action 'invalidateSession'}}>Logout</a>
-{{else}}
-  {{#link-to 'login'}}Login{{/link-to}}
-{{/if}}
-{{outlet}}
+<div class="container">
+  <div class="row">
+    <div class="col text-right">
+      {{#if session.isAuthenticated}}
+        <button {{action 'invalidateSession'}}>Logout</button>
+      {{else}}
+        {{login-form}}
+      {{/if}}
+    </div>
+  </div>
+  {{outlet}}
 
-{{file-uploader url="/upload"}}
+  <div class="row">
+    <div class="col-4 offset-4">
+        LOGO
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <h5 class="text-center">
+        Quick Links
+      </h5>
+      <ul class="list-group padding-bottom-1em">
+        <li class="list-group-item">Recent Items</li>
+        <li class="list-group-item">Donate</li>
+        <li class="list-group-item">Contact</li>
+        <li class="list-group-item">News</li>
+      </ul>
+      <h5 class="text-center">
+        Search
+      </h5>
+      <ul class="list-group">
+        <li class="list-group-item">Brands</li>
+        <li class="list-group-item">Item Types</li>
+        <li class="list-group-item">Tags</li>
+      </ul>
+    </div>
+    <div class="col-9">
+      <form>
+        <div class="form-group">
+          {{input class="form-control" placeholder="Search by Brand, Type, Feature or Color"}}
+        </div>
+      </form>
+      <div class="row">
+        {{#each model as |image|}}
+          <div class="col-4 d-inline">
+            <div class="card">
+              <img src="{{image.safeURL}}" class="card-img-top">
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">{{image.description}}</p>
+              </div>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+  {{#if session.isAuthenticated}}
+    {{file-uploader url="/images"}}
+  {{/if}}
+</div>
