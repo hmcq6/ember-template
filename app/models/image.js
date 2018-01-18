@@ -6,6 +6,7 @@ export default DS.Model.extend({
   url: DS.attr('string'),
   name: DS.attr('string'),
   description: DS.attr('string'),
+  brand: DS.belongsTo('brand'),
   safeURL: Ember.computed('url', function() {
     return `${
         window.location.protocol
