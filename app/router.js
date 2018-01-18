@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('brand');
   this.route('type');
   this.route('feature');
+  this.route('tag');
 });
 
 export default Router;
