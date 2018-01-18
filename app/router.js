@@ -14,6 +14,7 @@ Router.map(function() {
   this.route('tag');
   this.route('color');
   this.route('item');
+  this.route('contact');
 });
 
 export default Router;
