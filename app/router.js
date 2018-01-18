@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('login');
   this.route('brand');
   this.route('type');
+  this.route('feature');
 });
 
 export default Router;
