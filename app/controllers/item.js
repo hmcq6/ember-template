@@ -2,10 +2,10 @@ import Controller from '@ember/controller';
 
 export default Controller.extend({
   actions: {
-    addColor() {
+    addItem() {
       this.get('store').createRecord(
-        'color',
-        this.getProperties('name', 'hex')
+        'item',
+        this.getProperties('name', 'altName', 'year', 'productNumber', 'bust', 'length', 'price', 'waist', 'notes')
       ).save().catch(console.warn);
     }
   }

@@ -13,6 +13,7 @@ Router.map(function() {
   this.route('feature');
   this.route('tag');
   this.route('color');
+  this.route('item');
 });
 
 export default Router;
