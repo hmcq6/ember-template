@@ -29,6 +29,10 @@
         <label>Brand: </label>
         {{single-select children=model.brands onChange=(action "selectBrand")}}
       </div>
+      <div class="input-group">
+        <label>Type: </label>
+        {{single-select children=model.types onChange=(action "selectType")}}
+      </div>
       <label>Year: </label>
       {{input value=year class="form-control"}}
       <label>Product Number: </label>
