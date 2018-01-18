@@ -1,0 +1,15 @@
+<div class="row">
+  {{#each model as |type|}}
+    <div class="col-4 d-inline">
+      {{type.name}}
+    </div>
+  {{/each}}
+</div>
+
+<form {{action "addType" on="submit"}}>
+  <label>Name: </label>
+  {{input value=name class="form-control"}}
+  <button type="submit" class="btn btn-primary">Add Type</button>
+</form>
+
+{{outlet}}
