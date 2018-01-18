@@ -4,6 +4,9 @@ import { inject } from '@ember/service';
 export default Route.extend({
   store: inject(),
   model() {
-    return this.get('store').findAll('item');
+    return {
+      items: this.get('store').findAll('item'),
+      brands: this.get('store').findAll('brand')
+    };
   }
 });
