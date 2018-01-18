@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('type');
   this.route('feature');
   this.route('tag');
+  this.route('color');
 });
 
 export default Router;
