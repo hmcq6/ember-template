@@ -7,7 +7,8 @@ export default Route.extend({
     return {
       items: this.get('store').findAll('item'),
       brands: this.get('store').findAll('brand'),
-      types: this.get('store').findAll('type')
+      types: this.get('store').findAll('type'),
+      colors: this.get('store').findAll('color')
     };
   }
 });

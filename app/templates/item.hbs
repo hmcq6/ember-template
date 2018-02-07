@@ -18,7 +18,7 @@
   {{/each}}
 </div>
 
-{{#bs-modal open=isModalOpen onHidden=(action "modalClosed")}}
+{{#bs-modal open=isModalOpen onHidden=(action "modalClosed") size="lg"}}
   <div class="modal-body">
     <form {{action "addItem" on="submit"}}>
       <label>Name: </label>
@@ -37,6 +37,10 @@
       {{input value=year class="form-control"}}
       <label>Product Number: </label>
       {{input value=productNumber class="form-control"}}
+      <div class="input-group">
+        <label>Colors: </label>
+        {{multi-select children=model.colors}}
+      </div>
       <label>Bust: </label>
       {{input value=bust class="form-control"}}
       <label>Length: </label>
