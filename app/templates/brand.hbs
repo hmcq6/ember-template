@@ -1,0 +1,35 @@
+<div class="row">
+  <div class="col text-right">
+    {{#bs-button type="primary" onClick=(action "openModal")}}Add Brand+{{/bs-button}}
+  </div>
+</div>
+
+<div class="row">
+  {{#each model as |brand|}}
+    <div class="col-4 d-inline">
+      <div class="card">
+        <img src="{{brand.image.safeURL}}" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{brand.name}}</h5>
+          <p class="card-text">{{brand.nickname}}</p>
+        </div>
+      </div>
+    </div>
+  {{/each}}
+</div>
+
+{{#bs-modal open=isModalOpen onHidden=(action "modalClosed")}}
+  <div class="modal-body">
+    <form {{action "addBrand" on="submit"}}>
+      <label>Name: </label>
+      {{input value=name class="form-control"}}
+      <label>Nickname: </label>
+      {{input value=nickname class="form-control"}}
+      <label>Logo</label>
+      {{file-uploader filesDidChangeAction=(action "filesDidChange")}}
+      <button type="submit" class="btn btn-success">Add Brand</button>
+    </form>
+  </div>
+{{/bs-modal}}
+
+{{outlet}}

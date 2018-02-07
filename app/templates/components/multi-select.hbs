@@ -1,0 +1,9 @@
+{{input value=value}}
+<div class="container">
+  {{#each filteredChildren as |child|}}
+    <button type="button" class="btn btn-outline-dark {{if child.checked 'active'}}" onClick={{action "clickChild" child}}>
+      {{child.content.name}}
+      <i class="icon" style="background-color: {{child.content.hex}}">&nbsp;</i>
+    </button>
+  {{/each}}
+</div>

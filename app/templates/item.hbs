@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col text-right">
+    {{#bs-button type="primary" onClick=(action "openModal")}}Add Item+{{/bs-button}}
+  </div>
+</div>
+
+<form>
+  <div class="form-group">
+    {{input class="form-control" placeholder="Search by Brand, Type, Feature or Color"}}
+  </div>
+</form>
+
+<div class="row">
+  {{#each model.items as |item|}}
+    <div class="col-4 d-inline">
+      {{item.name}} by {{item.brand.name}}
+    </div>
+  {{/each}}
+</div>
+
+{{#bs-modal open=isModalOpen onHidden=(action "modalClosed") size="lg"}}
+  <div class="modal-body">
+    <form {{action "addItem" on="submit"}}>
+      <label>Name: </label>
+      {{input value=name class="form-control"}}
+      <label>Alternative Name: </label>
+      {{input value=altName class="form-control"}}
+      <div class="input-group">
+        <label>Brand: </label>
+        {{single-select children=model.brands onChange=(action "selectBrand")}}
+      </div>
+      <div class="input-group">
+        <label>Type: </label>
+        {{single-select children=model.types onChange=(action "selectType")}}
+      </div>
+      <label>Year: </label>
+      {{input value=year class="form-control"}}
+      <label>Product Number: </label>
+      {{input value=productNumber class="form-control"}}
+      <div class="input-group">
+        <label>Colors: </label>
+        {{multi-select children=model.colors}}
+      </div>
+      <label>Bust: </label>
+      {{input value=bust class="form-control"}}
+      <label>Length: </label>
+      {{input value=length class="form-control"}}
+      <label>Price: </label>
+      {{input value=price class="form-control"}}
+      <label>Waist: </label>
+      {{input value=waist class="form-control"}}
+      <label>Notes: </label>
+      {{input value=notes class="form-control"}}
+      {{#if session.isAuthenticated}}
+        {{file-uploader url="/images" filesDidChangeAction=(action "filesDidChange")}}
+      {{/if}}
+      <button type="submit" class="btn btn-success">Add Item</button>
+    </form>
+  </div>
+{{/bs-modal}}
+
+{{outlet}}

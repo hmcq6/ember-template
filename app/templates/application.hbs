@@ -1,8 +1,46 @@
-{{#if session.isAuthenticated}}
-  <a {{action 'invalidateSession'}}>Logout</a>
-{{else}}
-  {{#link-to 'login'}}Login{{/link-to}}
-{{/if}}
-{{outlet}}
+<div class="container">
+  <div class="row">
+    <div class="col text-right">
+      {{#if session.isAuthenticated}}
+        <button {{action 'invalidateSession'}} class="btn btn-dark">Logout</button>
+      {{else}}
+        {{login-form}}
+      {{/if}}
+    </div>
+  </div>
 
-{{file-uploader url="/upload"}}
+  <div class="row">
+    <div class="col-4 offset-4">
+      <img style="width: 100%;" src="https://lolibrary.org/assets/ban2-03.png">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <h5 class="text-center">
+        Quick Links
+      </h5>
+      <ul class="list-group padding-bottom-1em">
+        <li class="list-group-item">{{#link-to 'item'}}Recent Items{{/link-to}}</li>
+        <li class="list-group-item">Donate</li>
+        <li class="list-group-item">{{#link-to 'contact'}}Contact{{/link-to}}</li>
+        <li class="list-group-item">News</li>
+      </ul>
+      <h5 class="text-center">
+        Search
+      </h5>
+      <ul class="list-group">
+        <li class="list-group-item">{{#link-to 'brand'}}Brands{{/link-to}}</li>
+        <li class="list-group-item">{{#link-to 'type'}}Item Types{{/link-to}}</li>
+        <li class="list-group-item">{{#link-to 'feature'}}Item Features{{/link-to}}</li>
+        <li class="list-group-item">{{#link-to 'tag'}}Tags{{/link-to}}</li>
+        <li class="list-group-item">{{#link-to 'color'}}Colors{{/link-to}}</li>
+      </ul>
+    </div>
+    <div class="col-9">
+ 
+      {{outlet}}
+    </div>
+  </div>
+
+</div>

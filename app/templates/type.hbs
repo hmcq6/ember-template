@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col text-right">
+    {{#bs-button type="primary" onClick=(action "openModal")}}Add Type+{{/bs-button}}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <table class="table table-sm table-bordered">
+      <tr>
+        <td>Type</td>
+      </tr>
+      {{#each model as |type|}}
+        <tr>
+          <td>
+            {{type.name}}
+          </td>
+        </tr>
+      {{/each}}
+    </table>
+  </div>
+</div>
+
+{{#bs-modal open=isModalOpen onHidden=(action "modalClosed")}}
+  <div class="modal-body">
+    <form {{action "addType" on="submit"}}>
+      <label>Name: </label>
+      {{input value=name class="form-control"}}
+      <button type="submit" class="btn btn-success">Add Type</button>
+    </form>
+  </div>
+{{/bs-modal}}
+
+{{outlet}}
