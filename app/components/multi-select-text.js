@@ -22,11 +22,14 @@ export default Component.extend({
       this.get('_children') :
       this.get('_children').filter((child) => child.get('content.name').toLowerCase().includes(value));
   }),
-  selectedChildren: computed('_children.@each.checked', function() {
-    return this.get('_children').filterBy('checked');
-  }),
+  selectedChildren: computed.filterBy('_children', 'checked'),
   willDestroyElement() {
     this._super(...arguments);
     this.$().off('focus.multi-select-text');
+  },
+  actions: {
+    removeChild(child) {
+      child.toggleProperty('checked');
+    }
   }
 });

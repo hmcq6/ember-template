@@ -13,9 +13,6 @@
 </div>
 <div class="container">
   {{#each selectedChildren as |child|}}
-    <span class="badge badge-pill badge-primary">
-      {{child.content.name}}
-      {{fa-icon "times-circle"}}
-    </span>
+    {{removeable-pill text=child.content.name click=(action "removeChild" child)}}
   {{/each}}
 </div>
