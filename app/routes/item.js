@@ -8,7 +8,8 @@ export default Route.extend({
       items: this.get('store').findAll('item'),
       brands: this.get('store').findAll('brand'),
       types: this.get('store').findAll('type'),
-      colors: this.get('store').findAll('color')
+      colors: this.get('store').findAll('color'),
+      features: this.get('store').findAll('feature')
     };
   }
 });
