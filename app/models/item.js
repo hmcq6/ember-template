@@ -13,5 +13,6 @@ export default DS.Model.extend({
   type: DS.belongsTo('type'),
   brand: DS.belongsTo('brand'),
   colors: DS.hasMany('color'),
-  tags: DS.hasMany('tag')
+  tags: DS.hasMany('tag'),
+  images: DS.hasMany('image')
 });

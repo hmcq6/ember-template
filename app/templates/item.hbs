@@ -1,8 +1,10 @@
-<div class="row">
-  <div class="col text-right">
-    {{#bs-button type="primary" onClick=(action "openModal")}}Add Item+{{/bs-button}}
+{{#if session.isAuthenticated}}
+  <div class="row">
+    <div class="col text-right">
+      {{#bs-button type="primary" onClick=(action "openModal")}}Add Item+{{/bs-button}}
+    </div>
   </div>
-</div>
+{{/if}}
 
 <form>
   <div class="form-group">
@@ -51,9 +53,14 @@
       {{input value=waist class="form-control"}}
       <label>Notes: </label>
       {{input value=notes class="form-control"}}
-      {{#if session.isAuthenticated}}
-        {{file-uploader url="/images" filesDidChangeAction=(action "filesDidChange")}}
-      {{/if}}
+      <label>Add Photo: </label>
+      {{file-uploader url="/images" filesDidChangeAction=(action "filesDidChange")}}
+      <label>Images: </label>
+      <div>
+        {{#each images as |image|}}
+          <img src="{{image.safeURL}}" />
+        {{/each}}
+      </div>
       <button type="submit" class="btn btn-success">Add Item</button>
     </form>
   </div>
