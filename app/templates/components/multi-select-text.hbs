@@ -1,0 +1,18 @@
+<div data-role="multi-select-text--dropdown">
+  {{input value=value}}
+  {{#if showOptions}}
+    <ul class="list-group">
+      {{#each filteredChildren as |child|}}
+        <li class="list-group-item">
+          {{child.content.name}}
+          {{input type="checkbox" checked=child.checked}}
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>
+<div class="container">
+  {{#each selectedChildren as |child|}}
+    {{removeable-pill text=child.content.name click=(action "removeChild" child)}}
+  {{/each}}
+</div>
