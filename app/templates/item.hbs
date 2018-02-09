@@ -45,7 +45,7 @@
       </div>
       <div class="input-group">
         <label>Features: </label>
-        {{multi-select-text children=model.features}}
+        {{multi-select-text children=model.features selectedChildrenUpdated="selectedFeaturesUpdated"}}
       </div>
       <label>Bust: </label>
       {{input value=bust class="form-control"}}

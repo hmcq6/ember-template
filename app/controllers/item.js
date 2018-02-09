@@ -6,8 +6,10 @@ import ImageUploader from 'ember-template/mixins/image-uploader';
 
 export default Controller.extend(SimpleModal, ImageUploader, {
   brand: computed.oneWay('model.brands.firstObject'),
+  type: computed.oneWay('model.types.firstObject'),
 
   images: Ember.A(),
+  features: Ember.A(),
 
   actions: {
     addItem() {
@@ -16,6 +18,7 @@ export default Controller.extend(SimpleModal, ImageUploader, {
         this.getProperties('name', 'altName', 'brand', 'type', 'year', 'productNumber', 'bust', 'length', 'price', 'waist', 'notes')
       );
       item.get('images').addObjects(this.get('images'));
+      item.get('features').addObjects(this.get('features'));
       item.save().catch(console.warn);
     },
     selectBrand(value) {
@@ -31,6 +34,9 @@ export default Controller.extend(SimpleModal, ImageUploader, {
           this.get('images').addObject(image);
         });
       }).catch(console.warn);
+    },
+    selectedFeaturesUpdated(children) {
+      this.get('features').setObjects(children);
     }
   }
 });

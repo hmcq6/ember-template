@@ -27,6 +27,12 @@ export default Component.extend({
     this._super(...arguments);
     this.$().off('focus.multi-select-text');
   },
+  click() {
+    this._super(...arguments);
+    Ember.run.next(() => {
+      this.sendAction('selectedChildrenUpdated', this.getWithDefault('selectedChildren', []).mapBy('content'));
+    });
+  },
   actions: {
     removeChild(child) {
       child.toggleProperty('checked');
