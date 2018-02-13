@@ -6,6 +6,8 @@ import ImageUploader from 'ember-template/mixins/image-uploader';
 
 export default Controller.extend(ImageUploader, {
   session: inject(),
+  shoppingCart: inject(),
+  showCart: false,
   actions: {
     filesDidChange(files) {
       if (!Ember.isEmpty(files)) {
@@ -15,6 +17,9 @@ export default Controller.extend(ImageUploader, {
           ajaxSettings
         }).upload(files[0]);
       }
+    },
+    toggleShowCart() {
+      this.toggleProperty('showCart');
     }
   }
 });

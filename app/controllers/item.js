@@ -5,6 +5,8 @@ import SimpleModal from 'ember-template/mixins/simple-modal';
 import ImageUploader from 'ember-template/mixins/image-uploader';
 
 export default Controller.extend(SimpleModal, ImageUploader, {
+  shoppingCart: inject(),
+
   brand: computed.oneWay('model.brands.firstObject'),
   type: computed.oneWay('model.types.firstObject'),
 
@@ -37,6 +39,9 @@ export default Controller.extend(SimpleModal, ImageUploader, {
     },
     selectedFeaturesUpdated(children) {
       this.get('features').setObjects(children);
+    },
+    addToCart(item) {
+      this.get('shoppingCart').addToCart(item);
     }
   }
 });
